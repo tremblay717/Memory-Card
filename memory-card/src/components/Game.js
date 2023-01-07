@@ -1,4 +1,4 @@
-import React, { useReducer } from 'react';
+import React, { useState, useEffect, useReducer } from 'react';
 import Card from './Card';
 import monkey from  './images/monkey.png'
 import orangUtan from './images/orangutan.png'
@@ -39,7 +39,7 @@ export default function Game() {
 
     let animalsArray = [monkeyCard, orangutanCard, tigerCard, lionCard,foxCard,leopardCard, gorillaCard, wolfCard, bearCard,dogCard,hedgehogCard,mouseCard,otterCard,polarCard,raccoonCard,zebraCard];
     let animalsLevelOne = [monkeyCard, orangutanCard, tigerCard, lionCard];
-     
+    
     const reducer = (state, action) => {
         const card = animalsArray.find(element => element.name === action.name);
         const cardIndex = animalsArray.indexOf(card);
@@ -55,6 +55,16 @@ export default function Game() {
     }
 
     const [count, dispatch] = useReducer(reducer, {count: 0});
+    const [level, setLevel] = useState(1);
+
+    useEffect(() => {
+        if (count.count === 0) {
+            setLevel(1)
+        }
+        if (count.count === 4 || count.count === 8 ) {
+            setLevel(level + 1)
+        }
+      }, [count.count] )
 
     function isClicked(clickedCard, list) {
         const card = list.find(element => element.name === clickedCard);
@@ -121,8 +131,8 @@ export default function Game() {
     return (
         <div>
             <div className='userScore'>
-                <span>Score : {count.count} </span>
-                <span>Best Score : 0</span>
+                <span style={{fontSize:'25px'}}>Score: {count.count} </span>
+                <span style={{fontSize:'25px'}}>Level: {level}</span>
             </div>
             {count.count === 16 && 
             <div className='win'>
