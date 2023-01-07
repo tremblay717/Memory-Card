@@ -36,17 +36,12 @@ export default function Game({round}) {
     const polarCard = new Card ('polar', false, polar);
     const raccoonCard = new Card ('raccon', false, raccoon);
     const zebraCard = new Card ('zebra', false, zebra);
-
-    let animalsArray = [monkeyCard, orangutanCard, tigerCard, lionCard,foxCard,leopardCard, gorillaCard, wolfCard, bearCard,dogCard,hedgehogCard,mouseCard,otterCard,polarCard,raccoonCard,zebraCard];
-    
+  
     const reducer = (state, action) => {
-        // const card = animalsArray.find(element => element.name === action.name);
-        // const cardIndex = animalsArray.indexOf(card);
 
         let result = round.filter(animal => animal.name === action.name).length
-        console.log(action.name)
         switch (result) {
-            case result = 1:
+            case 1:
                 return {count: state.count + 1,
                 };
             default:
@@ -59,25 +54,21 @@ export default function Game({round}) {
 
     useEffect(() => {
         if (count.count === 0) {
-            setLevel(1)
+            setLevel(1);
         }
         if (count.count === 4 || count.count === 8 ) {
-            setLevel(level + 1)
+            setLevel(level + 1);
         }
       }, [count.count] )
 
     function isClicked(clickedCard, list) {
         const card = list.find(element => element.name === clickedCard);
         const cardIndex = list.indexOf(card);
-        round.push(list[cardIndex])
-        console.log('round', round)
-
+        round.push(list[cardIndex]);
         return list[cardIndex]
-        ;
     }
 
     const GameCardsLevelOne = () => {
-
         let arr = [];
         while(arr.length <= 4){
             let r = Math.floor(Math.random() * 4);
@@ -88,18 +79,15 @@ export default function Game({round}) {
         }
 
         let animalsLevelOne = [monkeyCard, orangutanCard, tigerCard, lionCard];
-
         let list = [];
-        // animalsLevelOne.forEach(element => {
         
-            for(let i = 0; i < animalsLevelOne.length; i++) {
-                list.push(
-                    <div className='box' key={uuid()}>
-                        <img onClick={(() => dispatch(isClicked(animalsLevelOne[arr[i]].name, animalsLevelOne)))} name={animalsLevelOne[arr[i]].name} src={animalsLevelOne[arr[i]].src} alt={animalsLevelOne[arr[i]].name}></img>
-                    </div>
-                )
-            }   
-        ;
+        for(let i = 0; i < animalsLevelOne.length; i++) {
+            list.push(
+                <div className='box' key={uuid()}>
+                    <img onClick={(() => dispatch(isClicked(animalsLevelOne[arr[i]].name, animalsLevelOne)))} name={animalsLevelOne[arr[i]].name} src={animalsLevelOne[arr[i]].src} alt={animalsLevelOne[arr[i]].name}></img>
+                </div>
+            )
+        }   
         return <div className='gameCards'>{list}</div>
     }
 
@@ -126,14 +114,13 @@ export default function Game({round}) {
 
         let list = [];
        
-            for(let i = 0; i < animalsLevelTwo.length; i++) {
-                list.push(
-                    <div className='box' key={uuid()}>
-                        <img onClick={(() => dispatch(isClicked(animalsLevelTwo[arr[i]].name, animalsLevelTwo)))} name={animalsLevelTwo[arr[i]].name} src={animalsLevelTwo[arr[i]].src} alt={animalsLevelTwo[arr[i]].name}></img>
-                    </div>
-                )
-            }   
-        ;
+        for(let i = 0; i < animalsLevelTwo.length; i++) {
+            list.push(
+                <div className='box' key={uuid()}>
+                    <img onClick={(() => dispatch(isClicked(animalsLevelTwo[arr[i]].name, animalsLevelTwo)))} name={animalsLevelTwo[arr[i]].name} src={animalsLevelTwo[arr[i]].src} alt={animalsLevelTwo[arr[i]].name}></img>
+                </div>
+            )
+        }   
         return <div className='gameCards'>{list}</div>
     }
 
