@@ -24,13 +24,14 @@ code {
 .headBar {
   display: flex;
   justify-content: space-between;
-  align-items: center;
+  /* align-items: center; */
 }
 
 .userScore {
   display: flex;
   flex-direction: column;
   gap:5px;
+  padding-top: 2%;
 }
 
 button {

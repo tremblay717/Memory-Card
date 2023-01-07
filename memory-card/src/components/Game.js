@@ -1,54 +1,49 @@
-import React, { useState, useEffect } from 'react';
+import React, { useReducer } from 'react';
 import Card from './Card';
 import monkey from  './images/monkey.png'
 import orangUtan from './images/orangutan.png'
 import tiger from './images/tiger.png'
 import lion from './images/lion.png'
 
-export default function Game({score, setScore}) {
+export default function Game() {
 
     const monkeyCard = new Card('monkey', false, monkey);
     const orangutanCard = new Card ('orangutan', false, orangUtan);
     const tigerCard = new Card ('tiger', false, tiger);
     const lionCard = new Card ('lion', false, lion);
 
-    let animals = [monkeyCard, orangutanCard, tigerCard, lionCard];
-
-    function resetAllFilters() {
-        setScore(0)
-      }    
-    function roundOne (event) {
-
-        const card = animals.find(element => element.name === event.target.name)
-        const cardIndex = animals.indexOf(card);
-        // console.log(animals[cardIndex])
-
-
-
-        if(animals[cardIndex].clickStatus) {
-            // console.log(animals[cardIndex])
-            // animals[cardIndex].clickStatus = true
-            console.log(animals[cardIndex])
-            
-            resetAllFilters();
-
-        } else {
-            animals[cardIndex].clickStatus = true
-            setScore( score + 1)
-
-        }
-        //     setScore(score + 1)
-        //     animals[cardIndex].clickStatus = true
-        //     console.log(animals[cardIndex])
-        // } 
-    }
+    let animalsLevelOne = [monkeyCard, orangutanCard, tigerCard, lionCard];
     
+    const reducer = (state, action) => {
+
+        const card = animalsLevelOne.find(element => element.name === action.name);
+        const cardIndex = animalsLevelOne.indexOf(card);
+
+        switch (action.clickStatus) {
+            case false:
+                animalsLevelOne[cardIndex].clickStatus = true;
+                return {count: state.count + 1};
+            case true:
+                return {count: state.count = 0};
+            default:
+                throw new Error ();            
+        }
+    }
+
+    const [count, dispatch] = useReducer(reducer, {count: 0});
+
+    function isClicked(clickedCard) {
+        const card = animalsLevelOne.find(element => element.name === clickedCard);
+        const cardIndex = animalsLevelOne.indexOf(card);
+        return animalsLevelOne[cardIndex];
+    }
+
     const GameCards = () => {
         let list = [];
-        animals.forEach(element => {
+        animalsLevelOne.forEach(element => {
             list.push(
-                <div className='box' key={element.name} onClick={roundOne}>
-                    <img name={element.name} src={element.src} alt={element.name}></img>
+                <div className='box' key={element.name}>
+                    <img onClick={(() => dispatch(isClicked(element.name)))} name={element.name} src={element.src} alt={element.name}></img>
                 </div>
             )            
         });
@@ -57,6 +52,10 @@ export default function Game({score, setScore}) {
 
     return (
         <div>
+            <div className='userScore'>
+                <span>Score : {count.count} </span>
+                <span>Best Score : 0</span>
+            </div>
            <GameCards/>
         </div>
     )
