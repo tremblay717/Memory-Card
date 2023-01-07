@@ -1,0 +1,29 @@
+{
+  "files": {
+    "main.css": "/Memory-Card/static/css/main.691fe82f.css",
+    "main.js": "/Memory-Card/static/js/main.4855435c.js",
+    "static/media/lion.png": "/Memory-Card/static/media/lion.7fc1a00b7038275b4700.png",
+    "static/media/orangutan.png": "/Memory-Card/static/media/orangutan.3b0c07d26858d9e92fa8.png",
+    "static/media/leopard.png": "/Memory-Card/static/media/leopard.28339b0007047b78289b.png",
+    "static/media/monkey.png": "/Memory-Card/static/media/monkey.f65f2de13ff788c31ec8.png",
+    "static/media/tiger.png": "/Memory-Card/static/media/tiger.9ba589c5a8cf16c0679d.png",
+    "static/media/dog.png": "/Memory-Card/static/media/dog.865f655ead0a7cf77311.png",
+    "static/media/hedgehog.png": "/Memory-Card/static/media/hedgehog.e0aea59be9e263c1c41d.png",
+    "static/media/bear.png": "/Memory-Card/static/media/bear.d981cad6ee0702e32afb.png",
+    "static/media/zebra.png": "/Memory-Card/static/media/zebra.09789c6afe219c53ccf0.png",
+    "static/media/fox.png": "/Memory-Card/static/media/fox.aebec2d76e752a0b977e.png",
+    "static/media/wolf.png": "/Memory-Card/static/media/wolf.74adfac3fe1aa6d02731.png",
+    "static/media/polar.png": "/Memory-Card/static/media/polar.4f2bc9fbce628fc5aebe.png",
+    "static/media/raccoon.png": "/Memory-Card/static/media/raccoon.e495d5de695e76c3e089.png",
+    "static/media/mouse.png": "/Memory-Card/static/media/mouse.676a1eed52b6f0abd68a.png",
+    "static/media/otter.png": "/Memory-Card/static/media/otter.4ec475ddfef3574796d1.png",
+    "static/media/gorilla.png": "/Memory-Card/static/media/gorilla.d1d75305add3861a9427.png",
+    "index.html": "/Memory-Card/index.html",
+    "main.691fe82f.css.map": "/Memory-Card/static/css/main.691fe82f.css.map",
+    "main.4855435c.js.map": "/Memory-Card/static/js/main.4855435c.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.691fe82f.css",
+    "static/js/main.4855435c.js"
+  ]
+}
