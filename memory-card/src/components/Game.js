@@ -38,7 +38,6 @@ export default function Game() {
     const zebraCard = new Card ('zebra', false, zebra);
 
     let animalsArray = [monkeyCard, orangutanCard, tigerCard, lionCard,foxCard,leopardCard, gorillaCard, wolfCard, bearCard,dogCard,hedgehogCard,mouseCard,otterCard,polarCard,raccoonCard,zebraCard];
-    let animalsLevelOne = [monkeyCard, orangutanCard, tigerCard, lionCard];
     
     const reducer = (state, action) => {
         const card = animalsArray.find(element => element.name === action.name);
@@ -73,20 +72,45 @@ export default function Game() {
     }
 
     const GameCardsLevelOne = () => {
+
+        let arr = [];
+        while(arr.length <= 4){
+            let r = Math.floor(Math.random() * 4);
+            if(arr.indexOf(r) === -1) arr.push(r);
+               if(arr.length === 4) {
+                break;
+            }
+        }
+
+        let animalsLevelOne = [monkeyCard, orangutanCard, tigerCard, lionCard];
+
         let list = [];
-        animalsLevelOne.forEach(element => {
-            list.push(
-                <div className='box' key={uuid()}>
-                    <img onClick={(() => dispatch(isClicked(element.name, animalsLevelOne)))} name={element.name} src={element.src} alt={element.name}></img>
-                </div>
-            )            
-        });
+        // animalsLevelOne.forEach(element => {
+        
+            for(let i = 0; i < animalsLevelOne.length; i++) {
+                list.push(
+                    <div className='box' key={uuid()}>
+                        <img onClick={(() => dispatch(isClicked(animalsLevelOne[arr[i]].name, animalsLevelOne)))} name={animalsLevelOne[arr[i]].name} src={animalsLevelOne[arr[i]].src} alt={animalsLevelOne[arr[i]].name}></img>
+                    </div>
+                )
+            }   
+        ;
         return <div className='gameCards'>{list}</div>
     }
 
     const GameCardsLevelTwo = () => {
 
+        let arr = [];
+        while(arr.length <= 8){
+            let r = Math.floor(Math.random() * 8);
+            if(arr.indexOf(r) === -1) arr.push(r);
+               if(arr.length === 8) {
+                break;
+            }
+        }
+
         let animalsLevelTwo = [foxCard, monkeyCard, lionCard,leopardCard, gorillaCard,tigerCard, wolfCard,orangutanCard];
+
         const levelOne = ['monkey','orangutan','tiger','lion'];
         
         for(let i = 0; i < levelOne.length; i++) {
@@ -96,17 +120,28 @@ export default function Game() {
         }
 
         let list = [];
-        animalsLevelTwo.forEach(element => {
-            list.push(
-                <div className='box' key={uuid()}>
-                    <img onClick={(() => dispatch(isClicked(element.name, animalsLevelTwo)))} name={element.name} src={element.src} alt={element.name}></img>
-                </div>
-            )            
-        });
+       
+            for(let i = 0; i < animalsLevelTwo.length; i++) {
+                list.push(
+                    <div className='box' key={uuid()}>
+                        <img onClick={(() => dispatch(isClicked(animalsLevelTwo[arr[i]].name, animalsLevelTwo)))} name={animalsLevelTwo[arr[i]].name} src={animalsLevelTwo[arr[i]].src} alt={animalsLevelTwo[arr[i]].name}></img>
+                    </div>
+                )
+            }   
+        ;
         return <div className='gameCards'>{list}</div>
     }
 
     const GameCardsLevelThree = () => {
+
+        let arr = [];
+        while(arr.length <= 16){
+            let r = Math.floor(Math.random() * 16);
+            if(arr.indexOf(r) === -1) arr.push(r);
+               if(arr.length === 16) {
+                break;
+            }
+        }
 
         let animalsLevelThree = [gorillaCard, bearCard, tigerCard, mouseCard, foxCard, monkeyCard, polarCard, otterCard, dogCard, lionCard,leopardCard, hedgehogCard,raccoonCard, wolfCard,zebraCard, orangutanCard];
         const levelTwo = ['monkey','orangutan','tiger','lion','leopard', 'gorilla', 'fox','wolf'];
@@ -118,13 +153,15 @@ export default function Game() {
         }
 
         let list = [];
-        animalsLevelThree.forEach(element => {
-            list.push(
-                <div className='box' key={uuid()}>
-                    <img onClick={(() => dispatch(isClicked(element.name, animalsLevelThree)))} name={element.name} src={element.src} alt={element.name}></img>
-                </div>
-            )            
-        });
+       
+            for(let i = 0; i < animalsLevelThree.length; i++) {
+                list.push(
+                    <div className='box' key={uuid()}>
+                        <img onClick={(() => dispatch(isClicked(animalsLevelThree[arr[i]].name, animalsLevelThree)))} name={animalsLevelThree[arr[i]].name} src={animalsLevelThree[arr[i]].src} alt={animalsLevelThree[arr[i]].name}></img>
+                    </div>
+                )
+            }   
+        ;
         return <div className='gameCards'>{list}</div>
     }
 
