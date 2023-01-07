@@ -4,10 +4,11 @@ import Headbar from './components/Headbar';
 
 function App() {
 
+  let round = [];
   return (
     <div className="App">
       <Headbar/>
-      <Game />
+      <Game round={round} />
     </div>
   );
 }

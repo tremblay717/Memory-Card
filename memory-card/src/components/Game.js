@@ -18,7 +18,7 @@ import raccoon from './images/raccoon.png'
 import zebra from './images/zebra.png'
 import uuid from 'react-uuid';
 
-export default function Game() {
+export default function Game({round}) {
 
     const monkeyCard = new Card('monkey', false, monkey);
     const orangutanCard = new Card ('orangutan', false, orangUtan);
@@ -40,20 +40,21 @@ export default function Game() {
     let animalsArray = [monkeyCard, orangutanCard, tigerCard, lionCard,foxCard,leopardCard, gorillaCard, wolfCard, bearCard,dogCard,hedgehogCard,mouseCard,otterCard,polarCard,raccoonCard,zebraCard];
     
     const reducer = (state, action) => {
-        const card = animalsArray.find(element => element.name === action.name);
-        const cardIndex = animalsArray.indexOf(card);
-        switch (action.clickStatus) {
-            case false:
-                animalsArray[cardIndex].clickStatus = true;
-                return {count: state.count + 1};
-            case true:
-                return {count: state.count = 0};
+        // const card = animalsArray.find(element => element.name === action.name);
+        // const cardIndex = animalsArray.indexOf(card);
+
+        let result = round.filter(animal => animal.name === action.name).length
+        console.log(action.name)
+        switch (result) {
+            case result = 1:
+                return {count: state.count + 1,
+                };
             default:
-                throw new Error ();
+                return {count: state.count = 0};
         }       
     }
 
-    const [count, dispatch] = useReducer(reducer, {count: 0});
+    const [count, dispatch] = useReducer(reducer, {count: 0, array: round});
     const [level, setLevel] = useState(1);
 
     useEffect(() => {
@@ -68,7 +69,11 @@ export default function Game() {
     function isClicked(clickedCard, list) {
         const card = list.find(element => element.name === clickedCard);
         const cardIndex = list.indexOf(card);
-        return list[cardIndex];
+        round.push(list[cardIndex])
+        console.log('round', round)
+
+        return list[cardIndex]
+        ;
     }
 
     const GameCardsLevelOne = () => {
